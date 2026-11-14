@@ -1,0 +1,158 @@
+/* Custom Scrollbar Removal */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Backdrop Blur for Modals */
+.modal-blur {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Cash memo printing (5 x 7 inch portrait) */
+@media print {
+    @page {
+        size: 5in 7in;
+        margin: 0.15in;
+    }
+    html, body {
+        width: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+    body > :not(#printable-receipt) { display: none !important; }
+    #printable-receipt, #printable-receipt * { visibility: visible; }
+    #printable-receipt {
+        display: block !important;
+        position: relative !important;
+        inset: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        box-sizing: border-box;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        color: #000;
+        background: #fff;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: calc(9pt * var(--receipt-scale, 1));
+        line-height: 1.15;
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+    }
+    #printable-receipt .receipt-center { text-align: center; }
+    #printable-receipt .receipt-title {
+        font-size: calc(15pt * var(--receipt-scale, 1));
+        font-weight: bold;
+    }
+    #printable-receipt .receipt-separator {
+        border-top: 1px dashed #000;
+        margin: calc(3px * var(--receipt-scale, 1)) 0;
+    }
+    #printable-receipt .receipt-meta div {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+    }
+    #printable-receipt .receipt-items {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+    #printable-receipt .receipt-items th,
+    #printable-receipt .receipt-items td {
+        padding: calc(1px * var(--receipt-scale, 1)) 0;
+        text-align: right;
+        vertical-align: top;
+    }
+    #printable-receipt .receipt-items th:first-child,
+    #printable-receipt .receipt-items td:first-child {
+        width: 46%;
+        text-align: left;
+        overflow-wrap: anywhere;
+    }
+    #printable-receipt .receipt-items th:nth-child(2),
+    #printable-receipt .receipt-items td:nth-child(2) { width: 10%; }
+    #printable-receipt .receipt-items th:nth-child(3),
+    #printable-receipt .receipt-items td:nth-child(3) { width: 20%; }
+    #printable-receipt .receipt-items th:nth-child(4),
+    #printable-receipt .receipt-items td:nth-child(4) { width: 24%; }
+    #printable-receipt .receipt-items tr {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    #printable-receipt .receipt-total { font-weight: bold; }
+    #printable-receipt .receipt-total > div {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+    }
+    #printable-receipt .receipt-footer { margin-top: calc(5px * var(--receipt-scale, 1)); }
+}
+
+/* Ad Card Hover Animation */
+.restaurant-updates-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.restaurant-updates-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ad Category Badges */
+.category-badge-special { background-color: #FEE2E2; color: #991B1B; }
+.category-badge-festival { background-color: #FEF3C7; color: #92400E; }
+.category-badge-new { background-color: #D1FAE5; color: #065F46; }
+.category-badge-combo { background-color: #DBEAFE; color: #1E40AF; }
+.category-badge-announcement { background-color: #F3E8FF; color: #6B21A8; }
+.category-badge-other { background-color: #F3F4F6; color: #374151; }
+
+/* Portal Transitions */
+.portal-section {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Table Occupied Animation */
+.occupied-table {
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); background-color: #fff1f1; }
+}
+
+/* ... existing CSS ... */
+
+.basket-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 10px;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* Fix for header overlap on mobile/desktop */
+.hero-section-padding {
+    padding-top: 80px;
+}
+
+.modal-blur {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
